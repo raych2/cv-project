@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function Header() {
-    return <h1>CV Builder</h1>
+  return <h1 className="Header">CV Builder</h1>;
 }
 
 export default Header;
