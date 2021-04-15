@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import General from "./components/General";
 import "./styles/Header.css";
+import "./styles/General.css";
 
 class App extends React.Component {
   render() {
