@@ -17,16 +17,12 @@ class General extends React.Component {
     });
   };
 
-  onSubmitEntry = (e) => {
-    e.preventDefault();
-  };
-
   render() {
     const submitted = this.props.submitted;
     return submitted === false ? (
       <div className="General form">
         <div>Personal Information</div>
-        <form onSubmit={this.onSubmitEntry}>
+        <form>
           <label htmlFor="name">Full Name:</label>
           <input
             value={this.state.name}
