@@ -7,7 +7,6 @@ class General extends React.Component {
       name: "",
       email: "",
       phone: "",
-      submitted: false,
     };
   }
 
@@ -18,45 +17,40 @@ class General extends React.Component {
     });
   };
 
-  handleEdit = (e) => {
-    this.setState({
-      submitted: false,
-    });
-  };
-
   onSubmitEntry = (e) => {
     e.preventDefault();
-    this.setState({
-      submitted: !this.state.submitted,
-    });
   };
 
   render() {
-    return this.state.submitted === false ? (
+    const submitted = this.props.submitted;
+    return submitted === false ? (
       <div className="General form">
+        <div>Personal Information</div>
         <form onSubmit={this.onSubmitEntry}>
+          <label htmlFor="name">Full Name:</label>
           <input
             value={this.state.name}
             type="text"
             id="name"
             onChange={this.handleInputChange}
-            placeholder="Full Name"
+            placeholder="Christine V"
           />
+          <label htmlFor="email">Email:</label>
           <input
             value={this.state.email}
             type="email"
             id="email"
             onChange={this.handleInputChange}
-            placeholder="Email Address"
+            placeholder="cv@email.com"
           />
+          <label htmlFor="phone">Phone Number:</label>
           <input
             value={this.state.phone}
             type="tel"
             id="phone"
             onChange={this.handleInputChange}
-            placeholder="Phone Number"
+            placeholder="123-456-7890"
           />
-          <button type="submit">View</button>
         </form>
       </div>
     ) : (
@@ -64,7 +58,6 @@ class General extends React.Component {
         <div className="full-name">{this.state.name}</div>
         <div className="other-personal">{this.state.email}</div>
         <div className="other-personal">{this.state.phone}</div>
-        <button onClick={this.handleEdit}>Edit</button>
       </div>
     );
   }
