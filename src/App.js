@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import General from "./components/General";
+import EducationForm from "./components/EducationForm";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,10 +23,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <form onSubmit={this.onSubmitEntry}>
-          <General submitted={submitted} />
-          <button type="submit">View/Edit CV</button>
-        </form>
+        <General submitted={submitted} />
+        <h2>Education</h2>
+        <EducationForm submitted={submitted} />
+        <button onClick={this.onSubmitEntry}>View/Edit CV</button>
       </div>
     );
   }
