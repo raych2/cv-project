@@ -35,6 +35,8 @@ class EducationForm extends React.Component {
   render() {
     const { schoolList } = this.state;
     const submitted = this.props.submitted;
+    const addSchool = this.props.addSchool;
+    const cancelSchool = this.props.cancelSchool;
     return submitted === false ? (
       <div className="Education form">
         <form onSubmit={this.onSubmitEntry}>
@@ -72,6 +74,8 @@ class EducationForm extends React.Component {
           />
           <button type="submit">Save School</button>
         </form>
+        <button onClick={addSchool}>Add School</button>
+        <button onClick={cancelSchool}>Cancel School</button>
       </div>
     ) : (
       <Education schoolList={schoolList} />

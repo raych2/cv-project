@@ -5,8 +5,12 @@ class Education extends React.Component {
     const schoolList = this.props.schoolList;
     return (
       <div className="view">
-        {schoolList.map((school) => {
-          return <div>{school}</div>;
+        {schoolList.map((school, index) => {
+          return (
+            <div key={index} id={index}>
+              {school}
+            </div>
+          );
         })}
       </div>
     );
