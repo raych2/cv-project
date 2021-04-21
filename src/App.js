@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       submitted: false,
       eduForms: 0,
+      jobForms: 0,
     };
   }
 
@@ -25,6 +26,18 @@ class App extends React.Component {
     });
   };
 
+  addJob = (e) => {
+    this.setState({
+      jobForms: this.state.jobForms + 1,
+    });
+  };
+
+  cancelJob = (e) => {
+    this.setState({
+      jobForms: this.state.jobForms - 1,
+    });
+  };
+
   onSubmitEntry = (e) => {
     e.preventDefault();
     this.setState({
@@ -35,6 +48,7 @@ class App extends React.Component {
   render() {
     const { submitted } = this.state;
     const extraEduForms = [];
+    const extraJobForms = [];
     for (let i = 0; i < this.state.eduForms; i++) {
       extraEduForms.push(
         <EducationForm
@@ -43,6 +57,17 @@ class App extends React.Component {
           submitted={submitted}
           addSchool={this.addSchool}
           cancelSchool={this.cancelSchool}
+        />
+      );
+    }
+    for (let i = 0; i < this.state.jobForms; i++) {
+      extraJobForms.push(
+        <ExperienceForm
+          key={i}
+          id={i}
+          submitted={submitted}
+          addJob={this.addJob}
+          cancelJob={this.cancelJob}
         />
       );
     }
@@ -67,6 +92,11 @@ class App extends React.Component {
           addJob={this.addJob}
           cancelJob={this.cancelJob}
         />
+        <div className="jobForms">
+          {extraJobForms.map((jobForm) => {
+            return <div>{jobForm}</div>;
+          })}
+        </div>
         <button onClick={this.onSubmitEntry}>View/Edit CV</button>
       </div>
     );
