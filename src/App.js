@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import General from "./components/General";
 import EducationForm from "./components/EducationForm";
+import ExperienceForm from "./components/ExperienceForm";
 
 class App extends React.Component {
   constructor(props) {
@@ -60,6 +61,12 @@ class App extends React.Component {
             return <div>{form}</div>;
           })}
         </div>
+        <h2>Experience</h2>
+        <ExperienceForm
+          submitted={submitted}
+          addJob={this.addJob}
+          cancelJob={this.cancelJob}
+        />
         <button onClick={this.onSubmitEntry}>View/Edit CV</button>
       </div>
     );
