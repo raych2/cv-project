@@ -72,10 +72,18 @@ class EducationForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="June 2019"
           />
-          <button type="submit">Save School</button>
+          <button type="submit">
+            <i class="far fa-save fa-lg"></i> School
+          </button>
         </form>
-        <button onClick={addSchool}>Add School</button>
-        <button onClick={cancelSchool}>Cancel School</button>
+        <div className="btn-container">
+          <button onClick={addSchool}>
+            <i className="btn-icon" class="fas fa-plus fa-lg"></i> School
+          </button>
+          <button onClick={cancelSchool}>
+            <i className="btn-icon" class="far fa-trash-alt fa-lg"></i> School
+          </button>
+        </div>
       </div>
     ) : (
       <Education schoolList={schoolList} />

@@ -82,10 +82,18 @@ class ExperienceForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="June 2021"
           />
-          <button type="submit">Save Job</button>
+          <button type="submit">
+            <i class="far fa-save fa-lg"></i> Job
+          </button>
         </form>
-        <button onClick={addJob}>Add Job</button>
-        <button onClick={cancelJob}>Cancel Job</button>
+        <div className="btn-container">
+          <button onClick={addJob}>
+            <i class="fas fa-plus fa-lg"></i> Job
+          </button>
+          <button onClick={cancelJob}>
+            <i class="far fa-trash-alt fa-lg"></i> Job
+          </button>
+        </div>
       </div>
     ) : (
       <Experience jobList={jobList} />

@@ -97,7 +97,9 @@ class App extends React.Component {
             return <div>{jobForm}</div>;
           })}
         </div>
-        <button onClick={this.onSubmitEntry}>View/Edit CV</button>
+        <div className="view-btn-container">
+          <button onClick={this.onSubmitEntry}>View/Edit CV</button>
+        </div>
       </div>
     );
   }

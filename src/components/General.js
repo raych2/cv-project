@@ -21,7 +21,7 @@ class General extends React.Component {
     const submitted = this.props.submitted;
     return submitted === false ? (
       <div className="General form">
-        <div>Personal Information</div>
+        <h2>Personal Information</h2>
         <form>
           <label htmlFor="name">Full Name:</label>
           <input
