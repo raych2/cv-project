@@ -9,7 +9,6 @@ class EducationForm extends React.Component {
       degree: "",
       start: "",
       end: "",
-      schoolList: [],
     };
   }
 
@@ -20,20 +19,8 @@ class EducationForm extends React.Component {
     });
   };
 
-  onSubmitEntry = (e) => {
-    e.preventDefault();
-    this.setState({
-      schoolList: this.state.schoolList.concat([
-        this.state.school,
-        this.state.degree,
-        this.state.start,
-        this.state.end,
-      ]),
-    });
-  };
-
   render() {
-    const { schoolList } = this.state;
+    const { school, degree, start, end} = this.state;
     const submitted = this.props.submitted;
     const addSchool = this.props.addSchool;
     const cancelSchool = this.props.cancelSchool;
@@ -72,21 +59,18 @@ class EducationForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="June 2019"
           />
-          <button type="submit">
-            <i class="far fa-save fa-lg"></i> School
-          </button>
         </form>
         <div className="btn-container">
           <button onClick={addSchool}>
             <i className="btn-icon" class="fas fa-plus fa-lg"></i> School
           </button>
           <button onClick={cancelSchool}>
-            <i className="btn-icon" class="far fa-trash-alt fa-lg"></i> School
+            <i class="far fa-trash-alt fa-lg"></i> Form
           </button>
         </div>
       </div>
     ) : (
-      <Education schoolList={schoolList} />
+      <Education school={school} degree={degree} start={start} end={end}/>
     );
   }
 }
