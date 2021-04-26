@@ -8,9 +8,11 @@ class Education extends React.Component {
     const end = this.props.end;
     return (
       <div className="education-view">
-            <div className="degree">{degree}</div>
-            <div className="schoolName">{school}</div>
-            <div className="dates">{start}-{end}</div>
+        <div className="degree">{degree}</div>
+        <div className="schoolName">{school}</div>
+        <div className="dates">
+          {start} - {end}
+        </div>
       </div>
     );
   }

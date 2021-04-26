@@ -14,7 +14,7 @@ class Experience extends React.Component {
         <div className="company">{company}</div>
         <div className="location">{location}</div>
         <div className="dates">
-          {jobStart}-{jobEnd}
+          {jobStart} - {jobEnd}
         </div>
         <div className="responsibilities">{responsibilities}</div>
       </div>

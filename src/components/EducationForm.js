@@ -20,7 +20,7 @@ class EducationForm extends React.Component {
   };
 
   render() {
-    const { school, degree, start, end} = this.state;
+    const { school, degree, start, end } = this.state;
     const submitted = this.props.submitted;
     const addSchool = this.props.addSchool;
     const cancelSchool = this.props.cancelSchool;
@@ -49,7 +49,7 @@ class EducationForm extends React.Component {
             type="text"
             id="start"
             onChange={this.handleInputChange}
-            placeholder="September 2015"
+            placeholder="09/2015"
           />
           <label htmlFor="end">End Date:</label>
           <input
@@ -57,20 +57,20 @@ class EducationForm extends React.Component {
             type="text"
             id="end"
             onChange={this.handleInputChange}
-            placeholder="June 2019"
+            placeholder="06/2019"
           />
         </form>
         <div className="btn-container">
           <button onClick={addSchool}>
-            <i className="btn-icon" class="fas fa-plus fa-lg"></i> School
+            <i className="fas fa-plus fa-lg"></i> School
           </button>
           <button onClick={cancelSchool}>
-            <i class="far fa-trash-alt fa-lg"></i> Form
+            <i className="far fa-trash-alt fa-lg"></i> Form
           </button>
         </div>
       </div>
     ) : (
-      <Education school={school} degree={degree} start={start} end={end}/>
+      <Education school={school} degree={degree} start={start} end={end} />
     );
   }
 }

@@ -74,28 +74,30 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <General submitted={submitted} />
-        <h2>Education</h2>
-        <EducationForm
-          submitted={submitted}
-          addSchool={this.addSchool}
-          cancelSchool={this.cancelSchool}
-        />
-        <div className="eduForms">
-          {extraEduForms.map((form) => {
-            return <div>{form}</div>;
-          })}
-        </div>
-        <h2>Experience</h2>
-        <ExperienceForm
-          submitted={submitted}
-          addJob={this.addJob}
-          cancelJob={this.cancelJob}
-        />
-        <div className="jobForms">
-          {extraJobForms.map((jobForm) => {
-            return <div>{jobForm}</div>;
-          })}
+        <div className="view">
+          <General submitted={submitted} />
+          <h2>Education</h2>
+          <EducationForm
+            submitted={submitted}
+            addSchool={this.addSchool}
+            cancelSchool={this.cancelSchool}
+          />
+          <div className="eduForms">
+            {extraEduForms.map((form) => {
+              return <div>{form}</div>;
+            })}
+          </div>
+          <h2>Professional Experience</h2>
+          <ExperienceForm
+            submitted={submitted}
+            addJob={this.addJob}
+            cancelJob={this.cancelJob}
+          />
+          <div className="jobForms">
+            {extraJobForms.map((jobForm) => {
+              return <div>{jobForm}</div>;
+            })}
+          </div>
         </div>
         <div className="view-btn-container">
           <button onClick={this.onSubmitEntry}>View/Edit CV</button>

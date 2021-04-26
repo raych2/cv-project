@@ -29,7 +29,7 @@ class General extends React.Component {
             type="text"
             id="name"
             onChange={this.handleInputChange}
-            placeholder="Christine V"
+            placeholder="Curriculum Vitae"
           />
           <label htmlFor="email">Email:</label>
           <input
@@ -50,7 +50,7 @@ class General extends React.Component {
         </form>
       </div>
     ) : (
-      <div className="General view">
+      <div className="general-view">
         <div className="full-name">{this.state.name}</div>
         <div className="other-personal">{this.state.email}</div>
         <div className="other-personal">{this.state.phone}</div>

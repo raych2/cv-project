@@ -66,7 +66,7 @@ class ExperienceForm extends React.Component {
             type="text"
             id="jobStart"
             onChange={this.handleInputChange}
-            placeholder="September 2019"
+            placeholder="09/2019"
           />
           <label htmlFor="end">End Date:</label>
           <input
@@ -74,7 +74,7 @@ class ExperienceForm extends React.Component {
             type="text"
             id="jobEnd"
             onChange={this.handleInputChange}
-            placeholder="June 2021"
+            placeholder="06/2021"
           />
           <label htmlFor="responsibilities">Job Responsibilities:</label>
           <textarea
@@ -86,10 +86,10 @@ class ExperienceForm extends React.Component {
         </form>
         <div className="btn-container">
           <button onClick={addJob}>
-            <i class="fas fa-plus fa-lg"></i> Job
+            <i className="fas fa-plus fa-lg"></i> Job
           </button>
           <button onClick={cancelJob}>
-            <i class="far fa-trash-alt fa-lg"></i> Form
+            <i className="far fa-trash-alt fa-lg"></i> Form
           </button>
         </div>
       </div>
