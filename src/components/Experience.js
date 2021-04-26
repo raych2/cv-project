@@ -7,6 +7,7 @@ class Experience extends React.Component {
     const location = this.props.location;
     const jobStart = this.props.jobStart;
     const jobEnd = this.props.jobEnd;
+    const responsibilities = this.props.responsibilities;
     return (
       <div className="experience-view">
         <div className="title">{title}</div>
@@ -15,6 +16,7 @@ class Experience extends React.Component {
         <div className="dates">
           {jobStart}-{jobEnd}
         </div>
+        <div className="responsibilities">{responsibilities}</div>
       </div>
     );
   }

@@ -10,6 +10,7 @@ class ExperienceForm extends React.Component {
       location: "",
       jobStart: "",
       jobEnd: "",
+      responsibilities: "",
     };
   }
 
@@ -21,7 +22,14 @@ class ExperienceForm extends React.Component {
   };
 
   render() {
-    const { company, title, location, jobStart, jobEnd } = this.state;
+    const {
+      company,
+      title,
+      location,
+      jobStart,
+      jobEnd,
+      responsibilities,
+    } = this.state;
     const submitted = this.props.submitted;
     const addJob = this.props.addJob;
     const cancelJob = this.props.cancelJob;
@@ -68,6 +76,13 @@ class ExperienceForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="June 2021"
           />
+          <label htmlFor="responsibilities">Job Responsibilities:</label>
+          <textarea
+            value={this.state.responsibilities}
+            id="responsibilities"
+            onChange={this.handleInputChange}
+            placeholder="Describe your job responsibilities"
+          />
         </form>
         <div className="btn-container">
           <button onClick={addJob}>
@@ -85,6 +100,7 @@ class ExperienceForm extends React.Component {
         location={location}
         jobStart={jobStart}
         jobEnd={jobEnd}
+        responsibilities={responsibilities}
       />
     );
   }
