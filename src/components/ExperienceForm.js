@@ -10,7 +10,6 @@ class ExperienceForm extends React.Component {
       location: "",
       jobStart: "",
       jobEnd: "",
-      jobList: [],
     };
   }
 
@@ -21,21 +20,8 @@ class ExperienceForm extends React.Component {
     });
   };
 
-  onSubmitEntry = (e) => {
-    e.preventDefault();
-    this.setState({
-      jobList: this.state.jobList.concat([
-        this.state.title,
-        this.state.company,
-        this.state.location,
-        this.state.jobStart,
-        this.state.jobEnd,
-      ]),
-    });
-  };
-
   render() {
-    const { jobList } = this.state;
+    const { company, title, location, jobStart, jobEnd } = this.state;
     const submitted = this.props.submitted;
     const addJob = this.props.addJob;
     const cancelJob = this.props.cancelJob;
@@ -82,21 +68,24 @@ class ExperienceForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="June 2021"
           />
-          <button type="submit">
-            <i class="far fa-save fa-lg"></i> Job
-          </button>
         </form>
         <div className="btn-container">
           <button onClick={addJob}>
             <i class="fas fa-plus fa-lg"></i> Job
           </button>
           <button onClick={cancelJob}>
-            <i class="far fa-trash-alt fa-lg"></i> Job
+            <i class="far fa-trash-alt fa-lg"></i> Form
           </button>
         </div>
       </div>
     ) : (
-      <Experience jobList={jobList} />
+      <Experience
+        company={company}
+        title={title}
+        location={location}
+        jobStart={jobStart}
+        jobEnd={jobEnd}
+      />
     );
   }
 }
