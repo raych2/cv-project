@@ -1,110 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import General from "./components/General";
 import EducationForm from "./components/EducationForm";
 import ExperienceForm from "./components/ExperienceForm";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      submitted: false,
-      eduForms: 0,
-      jobForms: 0,
-    };
-  }
+const App = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [eduForms, setEduForms] = useState(0);
+  const [jobForms, setJobForms] = useState(0);
 
-  addSchool = (e) => {
-    this.setState({
-      eduForms: this.state.eduForms + 1,
-    });
+  const addSchool = (e) => {
+    setEduForms(eduForms + 1);
   };
 
-  cancelSchool = (e) => {
-    this.setState({
-      eduForms: this.state.eduForms - 1,
-    });
+  const cancelSchool = (e) => {
+    setEduForms(eduForms - 1);
   };
 
-  addJob = (e) => {
-    this.setState({
-      jobForms: this.state.jobForms + 1,
-    });
+  const addJob = (e) => {
+    setJobForms(jobForms + 1);
   };
 
-  cancelJob = (e) => {
-    this.setState({
-      jobForms: this.state.jobForms - 1,
-    });
+  const cancelJob = (e) => {
+    setJobForms(jobForms - 1);
   };
 
-  onSubmitEntry = (e) => {
+  const onSubmitEntry = (e) => {
     e.preventDefault();
-    this.setState({
-      submitted: !this.state.submitted,
-    });
+    setSubmitted(!submitted);
   };
 
-  render() {
-    const { submitted } = this.state;
-    const extraEduForms = [];
-    const extraJobForms = [];
-    for (let i = 0; i < this.state.eduForms; i++) {
-      extraEduForms.push(
-        <EducationForm
-          key={i}
-          id={i}
-          submitted={submitted}
-          addSchool={this.addSchool}
-          cancelSchool={this.cancelSchool}
-        />
-      );
-    }
-    for (let i = 0; i < this.state.jobForms; i++) {
-      extraJobForms.push(
-        <ExperienceForm
-          key={i}
-          id={i}
-          submitted={submitted}
-          addJob={this.addJob}
-          cancelJob={this.cancelJob}
-        />
-      );
-    }
-    return (
-      <div className="App">
-        <Header />
-        <div className="view">
-          <General submitted={submitted} />
-          <h2>Education</h2>
-          <EducationForm
-            submitted={submitted}
-            addSchool={this.addSchool}
-            cancelSchool={this.cancelSchool}
-          />
-          <div className="eduForms">
-            {extraEduForms.map((form) => {
-              return <div>{form}</div>;
-            })}
-          </div>
-          <h2>Professional Experience</h2>
-          <ExperienceForm
-            submitted={submitted}
-            addJob={this.addJob}
-            cancelJob={this.cancelJob}
-          />
-          <div className="jobForms">
-            {extraJobForms.map((jobForm) => {
-              return <div>{jobForm}</div>;
-            })}
-          </div>
-        </div>
-        <div className="view-btn-container">
-          <button onClick={this.onSubmitEntry}>View/Edit CV</button>
-        </div>
-      </div>
+  const extraEduForms = [];
+  const extraJobForms = [];
+  for (let i = 0; i < eduForms; i++) {
+    extraEduForms.push(
+      <EducationForm
+        key={i}
+        id={i}
+        submitted={submitted}
+        addSchool={addSchool}
+        cancelSchool={cancelSchool}
+      />
     );
   }
-}
+  for (let i = 0; i < jobForms; i++) {
+    extraJobForms.push(
+      <ExperienceForm
+        key={i}
+        id={i}
+        submitted={submitted}
+        addJob={addJob}
+        cancelJob={cancelJob}
+      />
+    );
+  }
+  return (
+    <div className="App">
+      <Header />
+      <div className="view">
+        <General submitted={submitted} />
+        <h2>Education</h2>
+        <EducationForm
+          submitted={submitted}
+          addSchool={addSchool}
+          cancelSchool={cancelSchool}
+        />
+        <div className="eduForms">
+          {extraEduForms.map((form) => {
+            return <div>{form}</div>;
+          })}
+        </div>
+        <h2>Professional Experience</h2>
+        <ExperienceForm
+          submitted={submitted}
+          addJob={addJob}
+          cancelJob={cancelJob}
+        />
+        <div className="jobForms">
+          {extraJobForms.map((jobForm) => {
+            return <div>{jobForm}</div>;
+          })}
+        </div>
+      </div>
+      <div className="view-btn-container">
+        <button onClick={onSubmitEntry}>View/Edit CV</button>
+      </div>
+    </div>
+  );
+};
 
 export default App;
