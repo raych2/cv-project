@@ -12,7 +12,7 @@ const EducationForm = (props) => {
   const cancelSchool = props.cancelSchool;
   return submitted === false ? (
     <div className="Education form">
-      <form onSubmit={this.onSubmitEntry}>
+      <form>
         <label htmlFor="school">University:</label>
         <input
           value={school}
