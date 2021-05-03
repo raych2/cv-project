@@ -10,6 +10,7 @@ const ExperienceForm = (props) => {
   const [responsibilities, setResponsibilities] = useState("");
 
   const submitted = props.submitted;
+  const id = props.id;
   const addJob = props.addJob;
   const cancelJob = props.cancelJob;
   return submitted === false ? (
@@ -67,7 +68,7 @@ const ExperienceForm = (props) => {
         <button onClick={addJob}>
           <i className="fas fa-plus fa-lg"></i> Job
         </button>
-        <button onClick={cancelJob}>
+        <button onClick={() => cancelJob(id)}>
           <i className="far fa-trash-alt fa-lg"></i> Form
         </button>
       </div>

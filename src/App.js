@@ -9,6 +9,7 @@ const App = () => {
   const [eduForms, setEduForms] = useState(0);
   const [extraEduForms, setExtraEduForms] = useState([]);
   const [jobForms, setJobForms] = useState(0);
+  const [extraJobForms, setExtraJobForms] = useState([]);
 
   const addSchool = (e) => {
     setEduForms(eduForms + 1);
@@ -23,10 +24,13 @@ const App = () => {
 
   const addJob = (e) => {
     setJobForms(jobForms + 1);
+    const newJobForms = [...extraJobForms, { id: jobForms }];
+    setExtraJobForms(newJobForms);
   };
 
-  const cancelJob = (e) => {
-    setJobForms(jobForms - 1);
+  const cancelJob = (id) => {
+    const jobRemainder = extraJobForms.filter((item) => item.id !== id);
+    setExtraJobForms(jobRemainder);
   };
 
   const onSubmitEntry = (e) => {
@@ -34,18 +38,6 @@ const App = () => {
     setSubmitted(!submitted);
   };
 
-  const extraJobForms = [];
-  for (let i = 0; i < jobForms; i++) {
-    extraJobForms.push(
-      <ExperienceForm
-        key={i}
-        id={i}
-        submitted={submitted}
-        addJob={addJob}
-        cancelJob={cancelJob}
-      />
-    );
-  }
   return (
     <div className="App">
       <Header />
@@ -77,8 +69,16 @@ const App = () => {
           cancelJob={cancelJob}
         />
         <div className="jobForms">
-          {extraJobForms.map((jobForm) => {
-            return <div>{jobForm}</div>;
+          {extraJobForms.map((item) => {
+            return (
+              <ExperienceForm
+                key={`jobForm-${item.id}`}
+                id={item.id}
+                submitted={submitted}
+                addJob={addJob}
+                cancelJob={cancelJob}
+              />
+            );
           })}
         </div>
       </div>
