@@ -7,14 +7,18 @@ import ExperienceForm from "./components/ExperienceForm";
 const App = () => {
   const [submitted, setSubmitted] = useState(false);
   const [eduForms, setEduForms] = useState(0);
+  const [extraEduForms, setExtraEduForms] = useState([]);
   const [jobForms, setJobForms] = useState(0);
 
   const addSchool = (e) => {
     setEduForms(eduForms + 1);
+    const newForms = [...extraEduForms, { id: eduForms }];
+    setExtraEduForms(newForms);
   };
 
-  const cancelSchool = (e) => {
-    setEduForms(eduForms - 1);
+  const cancelSchool = (id) => {
+    const remainder = extraEduForms.filter((item) => item.id !== id);
+    setExtraEduForms(remainder);
   };
 
   const addJob = (e) => {
@@ -30,19 +34,7 @@ const App = () => {
     setSubmitted(!submitted);
   };
 
-  const extraEduForms = [];
   const extraJobForms = [];
-  for (let i = 0; i < eduForms; i++) {
-    extraEduForms.push(
-      <EducationForm
-        key={i}
-        id={i}
-        submitted={submitted}
-        addSchool={addSchool}
-        cancelSchool={cancelSchool}
-      />
-    );
-  }
   for (let i = 0; i < jobForms; i++) {
     extraJobForms.push(
       <ExperienceForm
@@ -66,8 +58,16 @@ const App = () => {
           cancelSchool={cancelSchool}
         />
         <div className="eduForms">
-          {extraEduForms.map((form) => {
-            return <div>{form}</div>;
+          {extraEduForms.map((item) => {
+            return (
+              <EducationForm
+                key={`form-${item.id}`}
+                id={item.id}
+                submitted={submitted}
+                addSchool={addSchool}
+                cancelSchool={cancelSchool}
+              />
+            );
           })}
         </div>
         <h2>Professional Experience</h2>

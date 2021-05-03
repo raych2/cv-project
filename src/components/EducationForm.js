@@ -8,6 +8,7 @@ const EducationForm = (props) => {
   const [end, setEnd] = useState("");
 
   const submitted = props.submitted;
+  const id = props.id;
   const addSchool = props.addSchool;
   const cancelSchool = props.cancelSchool;
   return submitted === false ? (
@@ -50,7 +51,7 @@ const EducationForm = (props) => {
         <button onClick={addSchool}>
           <i className="fas fa-plus fa-lg"></i> School
         </button>
-        <button onClick={cancelSchool}>
+        <button onClick={() => cancelSchool(id)}>
           <i className="far fa-trash-alt fa-lg"></i> Form
         </button>
       </div>
